@@ -99,7 +99,13 @@ const useViewModel = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, key: keyof ViewModelState) => {
     const { value } = e.target;
-    setState((prev) => ({ ...prev, [key]: value }));
+  
+    // Ensure the input is a non-negative number before updating the state
+    const sanitizedValue = value
+      .replace(/[^0-9.-]/g, '') // Remove non-numeric characters except dots and minus signs
+      .replace(/^-/, ''); // Remove leading minus sign, if any
+  
+    setState((prev) => ({ ...prev, [key]: sanitizedValue }));
   };
 
   const handleDateChange = (date: Date | null) => {
@@ -116,6 +122,10 @@ const useViewModel = () => {
     setState((prev) => ({ ...prev, isDateSelected: false }));
   };
 
+  const resetDateTime = () => {
+    setState((prev) => ({ ...prev, dateTime: getCurrentDateTime() }));
+  };
+
   return {
     state,
     calculateDeliveryFee,
@@ -123,6 +133,7 @@ const useViewModel = () => {
     handleDateChange,
     handleDatepickerFocus,
     handleDateBlur,
+    resetDateTime,
   };
 };
 
