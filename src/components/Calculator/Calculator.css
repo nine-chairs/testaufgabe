@@ -1,0 +1,46 @@
+.calculatorContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 4px solid #7EE7FF;
+  border-radius: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  padding: 30px;
+}
+
+.inputContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: pink;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+}
+
+.inputLabelContainer {
+  background-color: #7EE7FF;
+}
+
+.inputFieldContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 20px;
+  background-color: yellow;
+
+}
+
+.inputField {
+ background-color: aquamarine;
+ border-radius: 10px;
+ border: none;
+ height: 30px;
+}
+
+
+
+
