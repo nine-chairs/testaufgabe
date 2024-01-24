@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'; // Import the styles
+import Calendar from './Calendar'; // Adjust the path as needed
 
 const Calculator: React.FC = () => {
   const getCurrentDateTime = (): string => {
@@ -142,14 +142,11 @@ const Calculator: React.FC = () => {
       <br />
       <label>
         Date and Time:
-        <DatePicker
-          selected={new Date(dateTime)}
-          onChange={handleDateChange}
+        <Calendar
+          selectedDate={new Date(dateTime)}
+          onDateChange={handleDateChange}
           onFocus={() => setIsDatepickerOpen(true)}
           onBlur={handleDateBlur}
-          showTimeSelect
-          timeFormat="HH:mm"
-          dateFormat="yyyy-MM-dd HH:mm"
         />
       </label>
       <br />
