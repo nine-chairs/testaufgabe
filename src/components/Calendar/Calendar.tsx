@@ -8,15 +8,11 @@ interface CalendarProps {
   onDateChange: (date: Date | null) => void;
   onFocus: () => void;
   onBlur: () => void;
-  onReset: () => void; // New callback for resetting the date and time
 }
 
-const Calendar: React.FC<CalendarProps> = ({ selectedDate, onDateChange, onFocus, onBlur, onReset }) => {
+const Calendar: React.FC<CalendarProps> = ({ selectedDate, onDateChange, onFocus, onBlur }) => {
   return (
-    <div>
-
-      <button onClick={onReset}>X</button>
-
+    <>
       <DatePicker
         className='datePicker'
         selected={selectedDate}
@@ -27,9 +23,7 @@ const Calendar: React.FC<CalendarProps> = ({ selectedDate, onDateChange, onFocus
         timeFormat="HH:mm"
         dateFormat="dd/MM/yy  HH:mm"
       />
-
-
-    </div>
+    </>
   );
 };
 

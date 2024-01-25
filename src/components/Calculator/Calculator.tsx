@@ -1,16 +1,17 @@
 import React from 'react';
-import 'react-datepicker/dist/react-datepicker.css';
-import Calendar from '../Calendar/Calendar';
 import useViewModel from './viewModel';
+import Calendar from '../Calendar/Calendar';
+import 'react-datepicker/dist/react-datepicker.css';
 import './Calculator.css'
+import reset from '../../images/reset.svg'
 
 const Calculator: React.FC = () => {
 
   const viewModel = useViewModel()
 
   return (
-    <div className='calculatorContainer'>
-      <div className='inputContainer'>
+    <div className='calculatorWrapper'>
+      <div className='inputWrapper'>
         <div className='inputLabelContainer'>
           <label>
             Cart Value:
@@ -27,7 +28,7 @@ const Calculator: React.FC = () => {
         </div>
       </div>
 
-      <div className='inputContainer'>
+      <div className='inputWrapper'>
         <div className='inputLabelContainer'>
           <label>
             Distance:
@@ -44,7 +45,7 @@ const Calculator: React.FC = () => {
         </div>
       </div>
 
-      <div className='inputContainer'>
+      <div className='inputWrapper'>
         <div className='inputLabelContainer'>
           <label>
             No. of Items:
@@ -61,13 +62,14 @@ const Calculator: React.FC = () => {
         </div>
       </div>
 
-      <div className='inputContainer'>
+      <div className='inputWrapper'>
         <div className='inputLabelContainer'>
           <label>
             Time:
           </label>
-
-
+          <button className='resetTimeButton' onClick={viewModel.resetDateTime}>
+            <img className='resetIcon' src={reset} alt={'reset-time'} />
+          </button>
         </div>
         <div className='inputFieldContainer'>
           <Calendar
@@ -75,7 +77,6 @@ const Calculator: React.FC = () => {
             onDateChange={viewModel.handleDateChange}
             onFocus={viewModel.handleDatepickerFocus}
             onBlur={viewModel.handleDateBlur}
-            onReset={viewModel.resetDateTime}
           />
         </div>
       </div>
@@ -88,15 +89,32 @@ const Calculator: React.FC = () => {
         </button>
       </div>
 
-
-
       {viewModel.state.finalDeliveryFee !== null && (
-        <div>
-          <strong>Delivery Fee:</strong> {viewModel.state.finalDeliveryFee} euros <br />
-          <strong>Total:</strong> {viewModel.state.totalPrice} euros
+        <div className='outputWrapper'>
+          <div className='outputContainer'>
+            <div className='outputLabelContainer'>
+              <label>Delivery Fee:</label>
+            </div>
+            <div className='outputValueContainer'>
+              <output>
+                {viewModel.state.finalDeliveryFee} €
+              </output>
+            </div>
+          </div>
+          <div className='outputContainer'>
+            <div className='outputLabelContainer'>
+              <label>Total:</label>
+            </div>
+            <div className='outputValueContainer'>
+              <output className='totalPriceOutput'>
+                {viewModel.state.totalPrice} €
+              </output>
+            </div>
+          </div>
         </div>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 };
 
