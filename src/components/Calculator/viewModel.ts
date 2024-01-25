@@ -83,7 +83,7 @@ const useViewModel = () => {
     const dayOfWeek = selectedDateTime.getDay();
     const hours = selectedDateTime.getHours();
 
-    if (dayOfWeek === 5 && hours >= 15 && hours <= 19) {
+    if (dayOfWeek === 5 && hours >= 15 && hours <= 18) {
       totalFee *= 1.2;
     }
 

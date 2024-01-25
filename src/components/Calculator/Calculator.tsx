@@ -66,6 +66,8 @@ const Calculator: React.FC = () => {
           <label>
             Time:
           </label>
+
+
         </div>
         <div className='inputFieldContainer'>
           <Calendar
@@ -78,10 +80,16 @@ const Calculator: React.FC = () => {
         </div>
       </div>
 
+      <div className='buttonContainer'>
+        <button
+          className='calculateFeeButton'
+          onClick={viewModel.calculateDeliveryFee}>
+          Calculate Fee
+        </button>
+      </div>
 
-      <br />
-      <button onClick={viewModel.calculateDeliveryFee}>Calculate Fee</button>
-      <br />
+
+
       {viewModel.state.finalDeliveryFee !== null && (
         <div>
           <strong>Delivery Fee:</strong> {viewModel.state.finalDeliveryFee} euros <br />

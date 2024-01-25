@@ -1,6 +1,7 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import './Calendar.css'
 
 interface CalendarProps {
   selectedDate: Date;
@@ -10,21 +11,26 @@ interface CalendarProps {
   onReset: () => void; // New callback for resetting the date and time
 }
 
-const CustomDatePicker: React.FC<CalendarProps> = ({ selectedDate, onDateChange, onFocus, onBlur, onReset }) => {
+const Calendar: React.FC<CalendarProps> = ({ selectedDate, onDateChange, onFocus, onBlur, onReset }) => {
   return (
     <div>
+
+      <button onClick={onReset}>X</button>
+
       <DatePicker
+        className='datePicker'
         selected={selectedDate}
         onChange={onDateChange}
         onFocus={onFocus}
         onBlur={onBlur}
         showTimeSelect
         timeFormat="HH:mm"
-        dateFormat="yyyy-MM-dd HH:mm"
+        dateFormat="dd/MM/yy  HH:mm"
       />
-      <button onClick={onReset}>X</button> {/* Reset button */}
+
+
     </div>
   );
 };
 
-export default CustomDatePicker;
+export default Calendar;

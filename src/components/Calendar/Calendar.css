@@ -1,0 +1,10 @@
+.datePicker {
+  font-family: 'M PLUS Rounded 1c';
+  font-weight: 500;
+  font-size: 18px;
+  background-color: aquamarine;
+  border-radius: 10px;
+  border: none;
+  height: 36px;
+  width: 150px;
+}
