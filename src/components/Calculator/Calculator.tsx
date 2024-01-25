@@ -40,7 +40,7 @@ const Calculator: React.FC = () => {
             type="number"
             value={viewModel.state.deliveryDistanceInput}
             onChange={(e) => viewModel.handleInputChange(e, 'deliveryDistanceInput')}
-            min="0"
+            min="1"
           />
         </div>
       </div>
@@ -57,7 +57,7 @@ const Calculator: React.FC = () => {
             type="number"
             value={viewModel.state.numberOfItemsInput}
             onChange={(e) => viewModel.handleInputChange(e, 'numberOfItemsInput')}
-            min="0"
+            min="1"
           />
         </div>
       </div>
@@ -83,9 +83,13 @@ const Calculator: React.FC = () => {
 
       <div className='buttonContainer'>
         <button
-          className='calculateFeeButton'
-          onClick={viewModel.calculateDeliveryFee}>
-          Calculate Fee
+          className={`calculateFeeButton ${viewModel.areAllInputsFilled() ? '' : 'disabledButton'}`}
+          onClick={viewModel.calculateDeliveryFee}
+          disabled={!viewModel.areAllInputsFilled()}
+        >
+          <text>
+            Calculate Fee
+          </text>
         </button>
       </div>
 
@@ -93,7 +97,9 @@ const Calculator: React.FC = () => {
         <div className='outputWrapper'>
           <div className='outputContainer'>
             <div className='outputLabelContainer'>
-              <label>Delivery Fee:</label>
+              <label>
+                Delivery Fee:
+              </label>
             </div>
             <div className='outputValueContainer'>
               <output>
@@ -103,7 +109,9 @@ const Calculator: React.FC = () => {
           </div>
           <div className='outputContainer'>
             <div className='outputLabelContainer'>
-              <label>Total:</label>
+              <label>
+                Total:
+              </label>
             </div>
             <div className='outputValueContainer'>
               <output className='totalPriceOutput'>

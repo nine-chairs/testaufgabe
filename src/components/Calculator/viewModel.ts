@@ -126,6 +126,14 @@ const useViewModel = () => {
     setState((prev) => ({ ...prev, dateTime: getCurrentDateTime() }));
   };
 
+  const areAllInputsFilled = () => {
+    return (
+      state.cartValueInput.trim() !== '' &&
+      state.deliveryDistanceInput.trim() !== '' &&
+      state.numberOfItemsInput.trim() !== ''
+    );
+  };
+
   return {
     state,
     calculateDeliveryFee,
@@ -134,6 +142,7 @@ const useViewModel = () => {
     handleDatepickerFocus,
     handleDateBlur,
     resetDateTime,
+    areAllInputsFilled,
   };
 };
 

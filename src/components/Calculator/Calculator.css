@@ -54,17 +54,19 @@ output {
   justify-content: space-between;
   align-items: center;
   margin-left: 10px;
-  background-color: yellow;
+  /* background-color: yellow; */
   /* width: 200px; */
 
 }
 
 .inputField {
- background-color: aquamarine;
+ background-color: rgb(233, 233, 233);
  border-radius: 10px;
+ padding-left: 10px;
+ padding-right: 10px;
  border: none;
  height: 36px;
- width: 150px;
+ width: 170px;
 }
 
 .buttonContainer {
@@ -90,6 +92,13 @@ output {
 
 .calculateFeeButton:hover {
   background-color: #4DA8DA; 
+}
+
+.calculateFeeButton.disabledButton {
+  background-color: white;
+  border: 4px solid #7EE7FF;
+  color: #7EE7FF;
+  cursor: not-allowed;
 }
 
 .resetTimeButton {
@@ -133,7 +142,7 @@ output {
   justify-content: space-between;
   align-items: center;
   /* background-color: aquamarine; */
-  width: 150px;
+  width: 180px;
 }
 
 .totalPriceOutput {

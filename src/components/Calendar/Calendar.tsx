@@ -21,7 +21,7 @@ const Calendar: React.FC<CalendarProps> = ({ selectedDate, onDateChange, onFocus
         onBlur={onBlur}
         showTimeSelect
         timeFormat="HH:mm"
-        dateFormat="dd/MM/yy  HH:mm"
+        dateFormat="dd/MM/yy      HH:mm"
       />
     </>
   );

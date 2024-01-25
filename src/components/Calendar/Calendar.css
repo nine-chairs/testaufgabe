@@ -2,9 +2,11 @@
   font-family: 'M PLUS Rounded 1c';
   font-weight: 500;
   font-size: 18px;
-  background-color: aquamarine;
-  border-radius: 10px;
+  background-color: rgb(233, 233, 233);
   border: none;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
   height: 36px;
-  width: 150px;
+  width: 170px;
 }
