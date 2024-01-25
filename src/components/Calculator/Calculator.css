@@ -1,3 +1,15 @@
+label {
+  font-family: 'M PLUS Rounded 1c';
+  font-weight: 900;
+  font-size: 18px;
+}
+
+input {
+  font-family: 'M PLUS Rounded 1c';
+  font-weight: 500;
+  font-size: 18px;
+}
+
 .calculatorContainer {
   position: absolute;
   top: 50%;
@@ -7,7 +19,7 @@
   border-radius: 20px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
+  max-width: 300px;
   padding: 30px;
 }
 
@@ -38,7 +50,8 @@
  background-color: aquamarine;
  border-radius: 10px;
  border: none;
- height: 30px;
+ height: 36px;
+ width: 120px;
 }
 
 

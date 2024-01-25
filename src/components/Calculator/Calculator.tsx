@@ -30,7 +30,7 @@ const Calculator: React.FC = () => {
       <div className='inputContainer'>
         <div className='inputLabelContainer'>
           <label>
-            Delivery Distance:
+            Distance:
           </label>
         </div>
         <div className='inputFieldContainer'>
@@ -47,7 +47,7 @@ const Calculator: React.FC = () => {
       <div className='inputContainer'>
         <div className='inputLabelContainer'>
           <label>
-            Number of items:
+            No. of Items:
           </label>
         </div>
         <div className='inputFieldContainer'>
@@ -64,7 +64,7 @@ const Calculator: React.FC = () => {
       <div className='inputContainer'>
         <div className='inputLabelContainer'>
           <label>
-            Date and Time:
+            Time:
           </label>
         </div>
         <div className='inputFieldContainer'>
