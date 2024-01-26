@@ -54,47 +54,50 @@ const useViewModel = () => {
       return;
     }
 
-    let totalFee = 0;
+    let finalFee = 0;
 
     if (cartValue < 10) {
       const surcharge = 10 - cartValue;
-      totalFee += surcharge;
+      finalFee += surcharge;
     }
 
     let distanceFee = deliveryDistance <= 1000 ? 2 : 2 + Math.ceil((deliveryDistance - 1000) / 500);
     distanceFee = Math.max(distanceFee, 1);
-    totalFee += distanceFee;
+    finalFee += distanceFee;
 
     const numberOfItemsSurcharge = Math.max(numberOfItems - 4, 0) * 0.5;
-    totalFee += numberOfItemsSurcharge;
+    finalFee += numberOfItemsSurcharge;
 
     if (numberOfItems > 12) {
-      totalFee += 1.2;
+      finalFee += 1.2;
     }
-
-    totalFee = Math.min(totalFee, 15);
 
     const selectedDateTime = new Date(state.dateTime.replace("T", " "));
     const dayOfWeek = selectedDateTime.getDay();
     const hours = selectedDateTime.getHours();
 
     if (dayOfWeek === 5 && hours >= 15 && hours <= 18) {
-      totalFee *= 1.2;
+      finalFee *= 1.2;
     }
 
-    totalFee = Math.min(totalFee, 15);
+    // rush hour condition
+    finalFee = Math.min(finalFee, 15);
+
+    const roundedFinalFee = Math.round(finalFee * 100) / 100;
+    const roundedTotalPrice = Math.round((finalFee + cartValue) * 100) / 100;
 
     setState((prev) => ({
       ...prev,
-      finalDeliveryFee: totalFee,
-      totalPrice: totalFee + cartValue,
+      finalDeliveryFee: roundedFinalFee,
+      totalPrice: roundedTotalPrice,
     }));
   };
 
   const handleFloatInputChange = (e: React.ChangeEvent<HTMLInputElement>, key: keyof ViewModelState) => {
     const { value } = e.target;
-    const numericValue = parseFloat(value);
-    setState((prev) => ({ ...prev, [key]: numericValue }));
+    // Limit the input to two decimal places
+    const numericValue = parseFloat(value.replace(/[^0-9.]/g, '')).toFixed(2);
+    setState((prev) => ({ ...prev, [key]: parseFloat(numericValue) }));
   };
 
   const handleIntegerInputChange = (e: React.ChangeEvent<HTMLInputElement>, key: keyof ViewModelState) => {
