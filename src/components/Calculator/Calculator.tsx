@@ -24,6 +24,7 @@ const Calculator: React.FC = () => {
             value={viewModel.state.cartValueInput}
             onChange={(e) => viewModel.handleFloatInputChange(e, 'cartValueInput')}
             min="0"
+            placeholder="0,00"
           />
         </div>
       </div>
@@ -41,6 +42,7 @@ const Calculator: React.FC = () => {
             value={viewModel.state.deliveryDistanceInput}
             onChange={(e) => viewModel.handleIntegerInputChange(e, 'deliveryDistanceInput')}
             min="0"
+            placeholder="0"
           />
         </div>
       </div>
@@ -58,6 +60,7 @@ const Calculator: React.FC = () => {
             value={viewModel.state.numberOfItemsInput}
             onChange={(e) => viewModel.handleIntegerInputChange(e, 'numberOfItemsInput')}
             min="0"
+            placeholder="0"
           />
         </div>
       </div>
