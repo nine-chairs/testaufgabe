@@ -26,6 +26,7 @@ const Calculator: React.FC = () => {
             min="0"
             placeholder="0,00"
           />
+          <span>€</span>
         </div>
       </div>
 
@@ -44,6 +45,7 @@ const Calculator: React.FC = () => {
             min="0"
             placeholder="0"
           />
+          <span>m</span>
         </div>
       </div>
 

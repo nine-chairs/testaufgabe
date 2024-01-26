@@ -16,6 +16,11 @@ output {
   font-size: 18px;
 }
 
+span {
+  translate: -45px;
+  /* background-color: pink; */
+}
+
 .calculatorWrapper {
   position: absolute;
   top: 50%;
