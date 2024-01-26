@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
 interface ViewModelState {
-  cartValueInput: string;
-  deliveryDistanceInput: string;
-  numberOfItemsInput: string;
+  cartValueInput: number;
+  deliveryDistanceInput: number;
+  numberOfItemsInput: number;
   finalDeliveryFee: number | null;
   totalPrice: number | null;
   dateTime: string;
@@ -23,9 +23,9 @@ const useViewModel = () => {
   };
 
   const initialState: ViewModelState = {
-    cartValueInput: '',
-    deliveryDistanceInput: '',
-    numberOfItemsInput: '',
+    cartValueInput: 0,
+    deliveryDistanceInput: 0,
+    numberOfItemsInput: 0,
     finalDeliveryFee: null,
     totalPrice: null,
     dateTime: getCurrentDateTime(),
@@ -44,36 +44,31 @@ const useViewModel = () => {
     return () => clearInterval(intervalId);
   }, [state.isDatepickerOpen, state.isDateSelected]);
 
-  const parseInputValue = (value: string): number => {
-    const normalizedValue = value.replace(',', '.');
-    return parseFloat(normalizedValue);
-  };
-
   const calculateDeliveryFee = () => {
-    const parsedCartValue = parseInputValue(state.cartValueInput);
-    const parsedDeliveryDistance = parseInputValue(state.deliveryDistanceInput);
-    const parsedNumberOfItems = parseInputValue(state.numberOfItemsInput);
+    const cartValue = state.cartValueInput;
+    const deliveryDistance = state.deliveryDistanceInput;
+    const numberOfItems = state.numberOfItemsInput;
 
-    if (parsedCartValue >= 200) {
-      setState((prev) => ({ ...prev, finalDeliveryFee: 0, totalPrice: parsedCartValue }));
+    if (cartValue >= 200) {
+      setState((prev) => ({ ...prev, finalDeliveryFee: 0, totalPrice: cartValue }));
       return;
     }
 
     let totalFee = 0;
 
-    if (parsedCartValue < 10) {
-      const surcharge = 10 - parsedCartValue;
+    if (cartValue < 10) {
+      const surcharge = 10 - cartValue;
       totalFee += surcharge;
     }
 
-    let distanceFee = parsedDeliveryDistance <= 1000 ? 2 : 2 + Math.ceil((parsedDeliveryDistance - 1000) / 500);
+    let distanceFee = deliveryDistance <= 1000 ? 2 : 2 + Math.ceil((deliveryDistance - 1000) / 500);
     distanceFee = Math.max(distanceFee, 1);
     totalFee += distanceFee;
 
-    const numberOfItemsSurcharge = Math.max(parsedNumberOfItems - 4, 0) * 0.5;
+    const numberOfItemsSurcharge = Math.max(numberOfItems - 4, 0) * 0.5;
     totalFee += numberOfItemsSurcharge;
 
-    if (parsedNumberOfItems > 12) {
+    if (numberOfItems > 12) {
       totalFee += 1.2;
     }
 
@@ -89,25 +84,25 @@ const useViewModel = () => {
 
     totalFee = Math.min(totalFee, 15);
 
-    totalFee = parseFloat(totalFee.toFixed(2));
     setState((prev) => ({
       ...prev,
       finalDeliveryFee: totalFee,
-      totalPrice: totalFee + parsedCartValue,
+      totalPrice: totalFee + cartValue,
     }));
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, key: keyof ViewModelState) => {
+  const handleFloatInputChange = (e: React.ChangeEvent<HTMLInputElement>, key: keyof ViewModelState) => {
     const { value } = e.target;
-  
-    // Ensure the input is a non-negative number before updating the state
-    const sanitizedValue = value
-      .replace(/[^0-9.-]/g, '') // Remove non-numeric characters except dots and minus signs
-      .replace(/^-/, ''); // Remove leading minus sign, if any
-  
-    setState((prev) => ({ ...prev, [key]: sanitizedValue }));
+    const numericValue = parseFloat(value);
+    setState((prev) => ({ ...prev, [key]: numericValue }));
   };
 
+  const handleIntegerInputChange = (e: React.ChangeEvent<HTMLInputElement>, key: keyof ViewModelState) => {
+    const { value } = e.target;
+    const numericValue = parseInt(value);
+    setState((prev) => ({ ...prev, [key]: numericValue }));
+  };
+  
   const handleDateChange = (date: Date | null) => {
     if (date) {
       setState((prev) => ({ ...prev, dateTime: date.toISOString(), isDateSelected: true }));
@@ -128,16 +123,17 @@ const useViewModel = () => {
 
   const areAllInputsFilled = () => {
     return (
-      state.cartValueInput.trim() !== '' &&
-      state.deliveryDistanceInput.trim() !== '' &&
-      state.numberOfItemsInput.trim() !== ''
+      state.cartValueInput > 0 &&
+      state.deliveryDistanceInput > 0 &&
+      state.numberOfItemsInput > 0
     );
   };
 
   return {
     state,
     calculateDeliveryFee,
-    handleInputChange,
+    handleFloatInputChange,
+    handleIntegerInputChange,
     handleDateChange,
     handleDatepickerFocus,
     handleDateBlur,
