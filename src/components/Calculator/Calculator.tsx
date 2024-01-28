@@ -14,7 +14,7 @@ const Calculator: React.FC = () => {
       <div className='inputWrapper'>
         <div className='inputLabelContainer'>
           <label>
-            Cart Value:
+            Cart Value
           </label>
         </div>
         <div className='inputFieldContainer'>
@@ -26,14 +26,16 @@ const Calculator: React.FC = () => {
             min="0"
             placeholder="0,00"
           />
-          <span>€</span>
+          <div className='unitContainer'>
+            <output>€</output>
+          </div>
         </div>
       </div>
 
       <div className='inputWrapper'>
         <div className='inputLabelContainer'>
           <label>
-            Distance:
+            Distance
           </label>
         </div>
         <div className='inputFieldContainer'>
@@ -45,14 +47,16 @@ const Calculator: React.FC = () => {
             min="0"
             placeholder="0"
           />
-          <span>m</span>
+          <div className='unitContainer'>
+            <output>m</output>
+          </div>
         </div>
       </div>
 
       <div className='inputWrapper'>
         <div className='inputLabelContainer'>
           <label>
-            No. of Items:
+            No. of Items
           </label>
         </div>
         <div className='inputFieldContainer'>
@@ -70,7 +74,7 @@ const Calculator: React.FC = () => {
       <div className='inputWrapper'>
         <div className='inputLabelContainer'>
           <label>
-            Time:
+            Time
           </label>
           <button className='resetTimeButton' onClick={viewModel.resetDateTime}>
             <img className='resetIcon' src={reset} alt={'reset-time'} />
@@ -93,7 +97,7 @@ const Calculator: React.FC = () => {
           disabled={!viewModel.areAllInputsFilled()}
         >
           <text>
-            Calculate Fee
+            CALCULATE PRICE
           </text>
         </button>
       </div>
@@ -115,7 +119,7 @@ const Calculator: React.FC = () => {
           <div className='outputContainer'>
             <div className='outputLabelContainer'>
               <label>
-                Total:
+                Total Price:
               </label>
             </div>
             <div className='outputValueContainer'>

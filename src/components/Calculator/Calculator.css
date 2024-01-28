@@ -16,20 +16,15 @@ output {
   font-size: 18px;
 }
 
-span {
-  translate: -45px;
-  /* background-color: pink; */
-}
-
 .calculatorWrapper {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 4px solid #7EE7FF;
+  border: 4px solid #4BB1E0;
   border-radius: 20px;
   background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   /* max-width: 400px; */
   padding-top: 30px;
   padding-left: 30px;
@@ -60,8 +55,11 @@ span {
   align-items: center;
   margin-left: 10px;
   /* background-color: yellow; */
-  /* width: 200px; */
+}
 
+.unitContainer {
+  width: 0px;
+  translate: -50px;
 }
 
 .inputField {
@@ -83,10 +81,10 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #7EE7FF;
+  background-color: #4BB1E0;
   border: none;
   width: 100%;
-  height: 50px;
+  height: 60px;
   font-family: 'M PLUS Rounded 1c';
   font-weight: 900;
   font-size: 18px;
@@ -96,13 +94,13 @@ span {
 }
 
 .calculateFeeButton:hover {
-  background-color: #4DA8DA; 
+  background-color: #89e9ff; 
 }
 
 .calculateFeeButton.disabledButton {
   background-color: white;
-  border: 4px solid #7EE7FF;
-  color: #7EE7FF;
+  border: 4px solid #4BB1E0;
+  color: #4BB1E0;
   cursor: not-allowed;
 }
 
