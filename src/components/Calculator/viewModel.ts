@@ -95,10 +95,24 @@ const useViewModel = () => {
 
   const handleFloatInputChange = (e: React.ChangeEvent<HTMLInputElement>, key: keyof ViewModelState) => {
     const { value } = e.target;
-    // Limit the input to two decimal places
-    const numericValue = parseFloat(value.replace(/[^0-9.]/g, '')).toFixed(2);
-    setState((prev) => ({ ...prev, [key]: parseFloat(numericValue) }));
+  
+    // Remove non-numeric characters
+    const numericValue = value.replace(/[^0-9.]/g, '');
+  
+    // Split the input into integer and decimal parts
+    const [integerPart, decimalPart] = numericValue.split('.');
+  
+    // Format the input to have at most two decimal places
+    const formattedValue = decimalPart !== undefined ? `${integerPart}.${decimalPart.slice(0, 2)}` : integerPart;
+  
+    // Update the input field value directly
+    e.target.value = formattedValue;
+  
+    // Update the state
+    setState((prev) => ({ ...prev, [key]: parseFloat(formattedValue) }));
   };
+  
+  
 
   const handleIntegerInputChange = (e: React.ChangeEvent<HTMLInputElement>, key: keyof ViewModelState) => {
     const { value } = e.target;

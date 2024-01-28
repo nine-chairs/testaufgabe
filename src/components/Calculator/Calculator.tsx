@@ -21,7 +21,7 @@ const Calculator: React.FC = () => {
           <input
             className='inputField'
             type="number"
-            value={viewModel.state.cartValueInput}
+            value={viewModel.state.cartValueInput === 0 ? '' : viewModel.state.cartValueInput}
             onChange={(e) => viewModel.handleFloatInputChange(e, 'cartValueInput')}
             min="0"
             placeholder="0,00"
@@ -42,7 +42,7 @@ const Calculator: React.FC = () => {
           <input
             className='inputField'
             type="number"
-            value={viewModel.state.deliveryDistanceInput}
+            value={viewModel.state.deliveryDistanceInput === 0 ? '' : viewModel.state.deliveryDistanceInput}
             onChange={(e) => viewModel.handleIntegerInputChange(e, 'deliveryDistanceInput')}
             min="0"
             placeholder="0"
@@ -63,7 +63,7 @@ const Calculator: React.FC = () => {
           <input
             className='inputField'
             type="number"
-            value={viewModel.state.numberOfItemsInput}
+            value={viewModel.state.numberOfItemsInput === 0 ? '' : viewModel.state.numberOfItemsInput}
             onChange={(e) => viewModel.handleIntegerInputChange(e, 'numberOfItemsInput')}
             min="0"
             placeholder="0"
@@ -112,7 +112,7 @@ const Calculator: React.FC = () => {
             </div>
             <div className='outputValueContainer'>
               <output>
-                {viewModel.state.finalDeliveryFee} €
+                {viewModel.state.finalDeliveryFee?.toFixed(2)} €
               </output>
             </div>
           </div>
@@ -124,7 +124,7 @@ const Calculator: React.FC = () => {
             </div>
             <div className='outputValueContainer'>
               <output className='totalPriceOutput'>
-                {viewModel.state.totalPrice} €
+                {viewModel.state.totalPrice?.toFixed(2)} €
               </output>
             </div>
           </div>
