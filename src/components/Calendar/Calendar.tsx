@@ -6,11 +6,9 @@ import './Calendar.css'
 interface CalendarProps {
   selectedDate: Date;
   onDateChange: (date: Date | null) => void;
-  onFocus: () => void;
-  onBlur: () => void;
 }
 
-const Calendar: React.FC<CalendarProps> = ({ selectedDate, onDateChange, onFocus, onBlur }) => {
+const Calendar: React.FC<CalendarProps> = ({ selectedDate, onDateChange, }) => {
   return (
     <>
       <DatePicker
@@ -18,8 +16,6 @@ const Calendar: React.FC<CalendarProps> = ({ selectedDate, onDateChange, onFocus
         data-test-id="orderTime"
         selected={selectedDate}
         onChange={onDateChange}
-        onFocus={onFocus}
-        onBlur={onBlur}
         showTimeSelect
         timeFormat="HH:mm"
         dateFormat="dd/MM/yy      HH:mm"

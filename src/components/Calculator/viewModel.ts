@@ -1,14 +1,13 @@
 import { useState, useEffect } from 'react';
 
 interface ViewModelState {
-  cartValueInput: number;
-  deliveryDistanceInput: number;
-  numberOfItemsInput: number;
+  cartValue: number;
+  deliveryDistance: number;
+  numberOfItems: number;
+  dateTime: string;
   finalDeliveryFee: number | null;
   totalPrice: number | null;
-  dateTime: string;
-  isDatepickerOpen: boolean;
-  isDateSelected: boolean;
+  isTimeIntervalUpdating: boolean,
 }
 
 const useViewModel = () => {
@@ -23,31 +22,42 @@ const useViewModel = () => {
   };
 
   const initialState: ViewModelState = {
-    cartValueInput: 0,
-    deliveryDistanceInput: 0,
-    numberOfItemsInput: 0,
+    cartValue: 0,
+    deliveryDistance: 0,
+    numberOfItems: 0,
+    dateTime: getCurrentDateTime(),
     finalDeliveryFee: null,
     totalPrice: null,
-    dateTime: getCurrentDateTime(),
-    isDatepickerOpen: false,
-    isDateSelected: false,
+    isTimeIntervalUpdating: true,
   };
 
   const [state, setState] = useState<ViewModelState>(initialState);
 
-  useEffect(() => {
+
+  /////////
+
+
+const updateTimeInterval = () => {
     const intervalId = setInterval(() => {
-      if (!state.isDatepickerOpen && !state.isDateSelected) {
+      if (state.isTimeIntervalUpdating) {
         setState((prev) => ({ ...prev, dateTime: getCurrentDateTime() }));
+        console.log('tik-tak')
       }
     }, 1000);
     return () => clearInterval(intervalId);
-  }, [state.isDatepickerOpen, state.isDateSelected]);
+  };
+
+  useEffect(updateTimeInterval, [state.isTimeIntervalUpdating]);
+
+
+
+
+///////////
 
   const calculateDeliveryFee = () => {
-    const cartValue = state.cartValueInput;
-    const deliveryDistance = state.deliveryDistanceInput;
-    const numberOfItems = state.numberOfItemsInput;
+    const cartValue = state.cartValue;
+    const deliveryDistance = state.deliveryDistance;
+    const numberOfItems = state.numberOfItems;
 
     if (cartValue >= 200) {
       setState((prev) => ({ ...prev, finalDeliveryFee: 0, totalPrice: cartValue }));
@@ -93,6 +103,8 @@ const useViewModel = () => {
     }));
   };
 
+  //////////////
+
   const handleFloatInputChange = (e: React.ChangeEvent<HTMLInputElement>, key: keyof ViewModelState) => {
     const { value } = e.target;
   
@@ -112,37 +124,34 @@ const useViewModel = () => {
     setState((prev) => ({ ...prev, [key]: parseFloat(formattedValue) }));
   };
   
-  
 
   const handleIntegerInputChange = (e: React.ChangeEvent<HTMLInputElement>, key: keyof ViewModelState) => {
     const { value } = e.target;
     const numericValue = parseInt(value);
     setState((prev) => ({ ...prev, [key]: numericValue }));
   };
+
+  ////////////
   
   const handleDateChange = (date: Date | null) => {
     if (date) {
-      setState((prev) => ({ ...prev, dateTime: date.toISOString(), isDateSelected: true }));
+      setState((prev) => ({ ...prev, dateTime: date.toISOString(), isTimeIntervalUpdating: false }));
     }
   };
 
-  const handleDatepickerFocus = () => {
-    setState((prev) => ({ ...prev, isDatepickerOpen: true }));
-  };
-
-  const handleDateBlur = () => {
-    setState((prev) => ({ ...prev, isDateSelected: false }));
-  };
-
   const resetDateTime = () => {
-    setState((prev) => ({ ...prev, dateTime: getCurrentDateTime() }));
+    setState((prev) => ({ ...prev, dateTime: getCurrentDateTime(), isTimeIntervalUpdating: true }));
+    console.log('hey you')
+    console.log(state.isTimeIntervalUpdating)
   };
+
+
 
   const areAllInputsFilled = () => {
     return (
-      state.cartValueInput > 0 &&
-      state.deliveryDistanceInput > 0 &&
-      state.numberOfItemsInput > 0
+      state.cartValue > 0 &&
+      state.deliveryDistance > 0 &&
+      state.numberOfItems > 0
     );
   };
 
@@ -152,8 +161,6 @@ const useViewModel = () => {
     handleFloatInputChange,
     handleIntegerInputChange,
     handleDateChange,
-    handleDatepickerFocus,
-    handleDateBlur,
     resetDateTime,
     areAllInputsFilled,
   };

@@ -22,8 +22,8 @@ const Calculator: React.FC = () => {
             className='inputField'
             data-test-id="cartValue"
             type="number"
-            value={viewModel.state.cartValueInput === 0 ? '' : viewModel.state.cartValueInput}
-            onChange={(e) => viewModel.handleFloatInputChange(e, 'cartValueInput')}
+            value={viewModel.state.cartValue === 0 ? '' : viewModel.state.cartValue}
+            onChange={(e) => viewModel.handleFloatInputChange(e, 'cartValue')}
             min="0"
             placeholder="0,00"
           />
@@ -44,8 +44,8 @@ const Calculator: React.FC = () => {
             className='inputField'
             data-test-id="deliveryDistance"
             type="number"
-            value={viewModel.state.deliveryDistanceInput === 0 ? '' : viewModel.state.deliveryDistanceInput}
-            onChange={(e) => viewModel.handleIntegerInputChange(e, 'deliveryDistanceInput')}
+            value={viewModel.state.deliveryDistance === 0 ? '' : viewModel.state.deliveryDistance}
+            onChange={(e) => viewModel.handleIntegerInputChange(e, 'deliveryDistance')}
             min="0"
             placeholder="0"
           />
@@ -66,8 +66,8 @@ const Calculator: React.FC = () => {
             className='inputField'
             data-test-id="numberOfItems"
             type="number"
-            value={viewModel.state.numberOfItemsInput === 0 ? '' : viewModel.state.numberOfItemsInput}
-            onChange={(e) => viewModel.handleIntegerInputChange(e, 'numberOfItemsInput')}
+            value={viewModel.state.numberOfItems === 0 ? '' : viewModel.state.numberOfItems}
+            onChange={(e) => viewModel.handleIntegerInputChange(e, 'numberOfItems')}
             min="0"
             placeholder="0"
           />
@@ -91,8 +91,6 @@ const Calculator: React.FC = () => {
           <Calendar
             selectedDate={new Date(viewModel.state.dateTime)}
             onDateChange={viewModel.handleDateChange}
-            onFocus={viewModel.handleDatepickerFocus}
-            onBlur={viewModel.handleDateBlur}
           />
         </div>
       </div>
