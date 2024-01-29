@@ -3,7 +3,7 @@ import useViewModel from './viewModel';
 import Calendar from '../Calendar/Calendar';
 import 'react-datepicker/dist/react-datepicker.css';
 import './Calculator.css'
-import reset from '../../images/reset.svg'
+import reset from '../../images/reset-icon.svg'
 
 const Calculator: React.FC = () => {
 

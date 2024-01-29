@@ -21,7 +21,7 @@ output {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 4px solid #4BB1E0;
+  border: 4px solid #00C5EA;
   border-radius: 20px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -81,7 +81,7 @@ output {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #4BB1E0;
+  background-color: #00C5EA;
   border: none;
   width: 100%;
   height: 60px;
@@ -94,13 +94,13 @@ output {
 }
 
 .calculateFeeButton:hover {
-  background-color: #89e9ff; 
+  background-color: #8be9fe; 
 }
 
 .calculateFeeButton.disabledButton {
   background-color: white;
-  border: 4px solid #4BB1E0;
-  color: #4BB1E0;
+  border: 4px solid #00C5EA;
+  color: #00C5EA;
   cursor: not-allowed;
 }
 
