@@ -23,6 +23,7 @@ const Calendar: React.FC<CalendarProps> = ({ selectedDate, onDateChange, onFocus
         showTimeSelect
         timeFormat="HH:mm"
         dateFormat="dd/MM/yy      HH:mm"
+        aria-label="Select Time and Date"
       />
     </>
   );

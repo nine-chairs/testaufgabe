@@ -13,7 +13,7 @@ const Calculator: React.FC = () => {
     <div className='calculatorWrapper'>
       <div className='inputWrapper'>
         <div className='inputLabelContainer'>
-          <label>
+          <label htmlFor='cartValue'>
             Cart Value
           </label>
         </div>
@@ -35,7 +35,7 @@ const Calculator: React.FC = () => {
 
       <div className='inputWrapper'>
         <div className='inputLabelContainer'>
-          <label>
+          <label htmlFor='deliveryDistance'>
             Distance
           </label>
         </div>
@@ -57,7 +57,7 @@ const Calculator: React.FC = () => {
 
       <div className='inputWrapper'>
         <div className='inputLabelContainer'>
-          <label>
+          <label htmlFor='numberOfItems'>
             No. of Items
           </label>
         </div>
@@ -76,11 +76,15 @@ const Calculator: React.FC = () => {
 
       <div className='inputWrapper'>
         <div className='inputLabelContainer'>
-          <label>
+          <label htmlFor='orderTime'>
             Time
           </label>
-          <button className='resetTimeButton' onClick={viewModel.resetDateTime}>
-            <img className='resetIcon' src={reset} alt={'reset-time'} />
+          <button
+            className='resetTimeButton'
+            onClick={viewModel.resetDateTime}
+            aria-label="Reset Selected Time and Date"
+          >
+            <img className='resetIcon' src={reset} alt={'Reset selected time and date button'} />
           </button>
         </div>
         <div className='inputFieldContainer'>
@@ -98,6 +102,7 @@ const Calculator: React.FC = () => {
           className={`calculateFeeButton ${viewModel.areAllInputsFilled() ? '' : 'disabledButton'}`}
           onClick={viewModel.calculateDeliveryFee}
           disabled={!viewModel.areAllInputsFilled()}
+          aria-label="Calculate Price"
         >
           <text>
             CALCULATE PRICE
@@ -109,7 +114,7 @@ const Calculator: React.FC = () => {
         <div className='outputWrapper'>
           <div className='outputContainer'>
             <div className='outputLabelContainer'>
-              <label>
+              <label htmlFor='deliveryFee'>
                 Delivery Fee:
               </label>
             </div>
@@ -121,7 +126,7 @@ const Calculator: React.FC = () => {
           </div>
           <div className='outputContainer'>
             <div className='outputLabelContainer'>
-              <label>
+              <label htmlFor='totalPrice'>
                 Total Price:
               </label>
             </div>
