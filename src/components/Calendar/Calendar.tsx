@@ -15,6 +15,7 @@ const Calendar: React.FC<CalendarProps> = ({ selectedDate, onDateChange, onFocus
     <>
       <DatePicker
         className='datePicker'
+        data-test-id="orderTime"
         selected={selectedDate}
         onChange={onDateChange}
         onFocus={onFocus}
