@@ -104,9 +104,7 @@ const Calculator: React.FC = () => {
           disabled={!viewModel.areAllInputsFilled()}
           aria-label="Calculate Price"
         >
-          <strong>
-            CALCULATE PRICE
-          </strong>
+          CALCULATE PRICE
         </button>
       </div>
 
