@@ -111,7 +111,7 @@ const Calculator: React.FC = () => {
           <div className='outputContainer'>
             <div className='outputLabelContainer'>
               <label htmlFor='deliveryFee'>
-                Delivery Fee:
+                Delivery Fee
               </label>
             </div>
             <div className='outputValueContainer'>
@@ -123,7 +123,7 @@ const Calculator: React.FC = () => {
           <div className='outputContainer'>
             <div className='outputLabelContainer'>
               <label htmlFor='totalPrice'>
-                Total Price:
+                Total Price
               </label>
             </div>
             <div className='outputValueContainer'>
