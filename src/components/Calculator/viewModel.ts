@@ -107,29 +107,38 @@ const updateTimeInterval = () => {
 
   const handleFloatInputChange = (e: React.ChangeEvent<HTMLInputElement>, key: keyof ViewModelState) => {
     const { value } = e.target;
-  
-    // Remove non-numeric characters
-    const numericValue = value.replace(/[^0-9.]/g, '');
-  
     // Split the input into integer and decimal parts
-    const [integerPart, decimalPart] = numericValue.split('.');
-  
+    const [integerPart, decimalPart] = value.split('.');
     // Format the input to have at most two decimal places
-    const formattedValue = decimalPart !== undefined ? `${integerPart}.${decimalPart.slice(0, 2)}` : integerPart;
-  
+    let formattedValue = integerPart + (decimalPart ? `.${decimalPart.slice(0, 2)}` : '');
+    // Remove leading zeros before the decimal point
+    formattedValue = formattedValue.replace(/^0+(?=\d*\.\d)/, '');
     // Update the input field value directly
     e.target.value = formattedValue;
-  
     // Update the state
-    setState((prev) => ({ ...prev, [key]: parseFloat(formattedValue) }));
+    const formattedNumericValue = parseFloat(formattedValue.replace(',', '.'));
+    setState((prev) => ({ ...prev, [key]: formattedNumericValue }));
   };
-  
 
   const handleIntegerInputChange = (e: React.ChangeEvent<HTMLInputElement>, key: keyof ViewModelState) => {
     const { value } = e.target;
-    const numericValue = parseInt(value);
-    setState((prev) => ({ ...prev, [key]: numericValue }));
+    // Keep only the integer part
+    const integerPart = value.split('.')[0];
+    // Remove leading zeros
+    const formattedValue = integerPart.replace(/^0+(?=\d)/, '');
+    // Update the input field value directly
+    e.target.value = formattedValue;
+    // Update the state
+    const formattedNumericValue = parseInt(formattedValue);
+    setState((prev) => ({ ...prev, [key]: formattedNumericValue }));
   };
+  
+  
+  // const handleIntegerInputChange = (e: React.ChangeEvent<HTMLInputElement>, key: keyof ViewModelState) => {
+  //   const { value } = e.target;
+  //   const numericValue = parseInt(value);
+  //   setState((prev) => ({ ...prev, [key]: numericValue }));
+  // };
 
   ////////////
   
