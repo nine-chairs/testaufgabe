@@ -127,7 +127,7 @@ const Calculator: React.FC = () => {
               </label>
             </div>
             <div className='outputValueContainer'>
-              <output className='totalPriceOutput'>
+              <output className='totalPriceOutput' data-test-id='totalPrice'>
                 {viewModel.state.totalPrice?.toFixed(2)} €
               </output>
             </div>
