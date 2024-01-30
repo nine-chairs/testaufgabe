@@ -106,39 +106,29 @@ const updateTimeInterval = () => {
   //////////////
 
   const handleFloatInputChange = (e: React.ChangeEvent<HTMLInputElement>, key: keyof ViewModelState) => {
-    const { value } = e.target;
-    // Split the input into integer and decimal parts
+    let { value } = e.target;
+    if (value === '') {
+      value = '0';
+    }
     const [integerPart, decimalPart] = value.split('.');
-    // Format the input to have at most two decimal places
-    let formattedValue = integerPart + (decimalPart ? `.${decimalPart.slice(0, 2)}` : '');
-    // Remove leading zeros before the decimal point
-    formattedValue = formattedValue.replace(/^0+(?=\d*\.\d)/, '');
-    // Update the input field value directly
-    e.target.value = formattedValue;
-    // Update the state
-    const formattedNumericValue = parseFloat(formattedValue.replace(',', '.'));
+    let formattedFloatValue = integerPart + (decimalPart ? `.${decimalPart.slice(0, 2)}` : '');
+    formattedFloatValue = formattedFloatValue.replace(/^0+(?=\d*\.\d)/, '');
+    e.target.value = formattedFloatValue;
+    const formattedNumericValue = parseFloat(formattedFloatValue.replace(',', '.'));
     setState((prev) => ({ ...prev, [key]: formattedNumericValue }));
   };
 
   const handleIntegerInputChange = (e: React.ChangeEvent<HTMLInputElement>, key: keyof ViewModelState) => {
-    const { value } = e.target;
-    // Keep only the integer part
+    let { value } = e.target;
+    if (value === '') {
+      value = '0';
+    }
     const integerPart = value.split('.')[0];
-    // Remove leading zeros
-    const formattedValue = integerPart.replace(/^0+(?=\d)/, '');
-    // Update the input field value directly
-    e.target.value = formattedValue;
-    // Update the state
-    const formattedNumericValue = parseInt(formattedValue);
+    const formattedIntegerValue = integerPart.replace(/^0+(?=\d)/, '');
+    e.target.value = formattedIntegerValue;
+    const formattedNumericValue = parseInt(formattedIntegerValue);
     setState((prev) => ({ ...prev, [key]: formattedNumericValue }));
   };
-  
-  
-  // const handleIntegerInputChange = (e: React.ChangeEvent<HTMLInputElement>, key: keyof ViewModelState) => {
-  //   const { value } = e.target;
-  //   const numericValue = parseInt(value);
-  //   setState((prev) => ({ ...prev, [key]: numericValue }));
-  // };
 
   ////////////
   
@@ -153,8 +143,6 @@ const updateTimeInterval = () => {
     console.log('hey you')
     console.log(state.isTimeIntervalUpdating)
   };
-
-
 
   const areAllInputsFilled = () => {
     return (
