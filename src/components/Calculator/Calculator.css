@@ -25,7 +25,6 @@ output {
   border-radius: 20px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  /* max-width: 400px; */
   padding-top: 30px;
   padding-left: 30px;
   padding-right: 30px;
@@ -35,7 +34,6 @@ output {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* background-color: pink; */
   padding-top: 5px;
   padding-bottom: 5px;
   margin-bottom: 10px;
@@ -45,7 +43,6 @@ output {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* background-color: #7EE7FF; */
   width: 130px;
 }
 
@@ -54,7 +51,6 @@ output {
   justify-content: space-between;
   align-items: center;
   margin-left: 10px;
-  /* background-color: yellow; */
 }
 
 .unitContainer {
@@ -129,7 +125,6 @@ output {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* background-color: pink; */
   margin-top: 10px;
 }
 
@@ -137,14 +132,12 @@ output {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* background-color: #7EE7FF; */
 }
 
 .outputValueContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* background-color: aquamarine; */
   width: 180px;
 }
 
