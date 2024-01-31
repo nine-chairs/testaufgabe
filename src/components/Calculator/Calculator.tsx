@@ -13,7 +13,7 @@ const Calculator: React.FC = () => {
     <div className='calculatorWrapper'>
       <div className='inputWrapper'>
         <div className='inputLabelContainer'>
-          <label htmlFor='cartValue'>
+          <label>
             Cart Value
           </label>
         </div>
@@ -35,7 +35,7 @@ const Calculator: React.FC = () => {
 
       <div className='inputWrapper'>
         <div className='inputLabelContainer'>
-          <label htmlFor='deliveryDistance'>
+          <label>
             Distance
           </label>
         </div>
@@ -57,7 +57,7 @@ const Calculator: React.FC = () => {
 
       <div className='inputWrapper'>
         <div className='inputLabelContainer'>
-          <label htmlFor='numberOfItems'>
+          <label>
             No. of Items
           </label>
         </div>
@@ -76,7 +76,7 @@ const Calculator: React.FC = () => {
 
       <div className='inputWrapper'>
         <div className='inputLabelContainer'>
-          <label htmlFor='orderTime'>
+          <label>
             Time
           </label>
           <button
@@ -110,7 +110,7 @@ const Calculator: React.FC = () => {
         <div className='outputWrapper'>
           <div className='outputContainer'>
             <div className='outputLabelContainer'>
-              <label htmlFor='deliveryFee'>
+              <label>
                 Delivery Fee
               </label>
             </div>
@@ -122,7 +122,7 @@ const Calculator: React.FC = () => {
           </div>
           <div className='outputContainer'>
             <div className='outputLabelContainer'>
-              <label htmlFor='totalPrice'>
+              <label>
                 Total Price
               </label>
             </div>
