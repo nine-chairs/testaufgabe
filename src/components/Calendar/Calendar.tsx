@@ -1,11 +1,11 @@
-import React from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import React from 'react'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
 import './Calendar.css'
 
 interface CalendarProps {
-  selectedDate: Date;
-  onDateChange: (date: Date | null) => void;
+  selectedDate: Date
+  onDateChange: (date: Date | null) => void
 }
 
 const Calendar: React.FC<CalendarProps> = ({ selectedDate, onDateChange, }) => {
@@ -22,7 +22,7 @@ const Calendar: React.FC<CalendarProps> = ({ selectedDate, onDateChange, }) => {
         aria-label="Select Time and Date"
       />
     </>
-  );
-};
+  )
+}
 
-export default Calendar;
+export default Calendar

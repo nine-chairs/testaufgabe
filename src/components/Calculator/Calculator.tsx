@@ -1,7 +1,7 @@
-import React from 'react';
-import useViewModel from './viewModel';
-import Calendar from '../Calendar/Calendar';
-import 'react-datepicker/dist/react-datepicker.css';
+import React from 'react'
+import useViewModel from './viewModel'
+import Calendar from '../Calendar/Calendar'
+import 'react-datepicker/dist/react-datepicker.css'
 import './Calculator.css'
 import reset from '../../images/reset-icon.svg'
 
@@ -136,7 +136,7 @@ const Calculator: React.FC = () => {
       )
       }
     </div >
-  );
-};
+  )
+}
 
-export default Calculator;
+export default Calculator
