@@ -39,7 +39,6 @@ const useViewModel = () => {
     const intervalId = setInterval(() => {
       if (state.isTimeIntervalUpdating) {
         setState((prev) => ({ ...prev, dateTime: getCurrentDateTime() }))
-        console.log('tik-tak')
       }
     }, 1000)
     return () => clearInterval(intervalId)
@@ -127,7 +126,6 @@ const useViewModel = () => {
     setState((prev) => ({ ...prev, [key]: formattedNumericValue }))
   }
 
-
   // function that sets the delivery time and date
   const handleDateChange = (date: Date | null) => {
     if (date) {
@@ -138,11 +136,9 @@ const useViewModel = () => {
   // function that resets the delivery time and date 
   const resetDateTime = () => {
     setState((prev) => ({ ...prev, dateTime: getCurrentDateTime(), isTimeIntervalUpdating: true }))
-    console.log('hey you')
-    console.log(state.isTimeIntervalUpdating)
   }
 
-  // make sure if all input fields are filled in order to enable the 'calculate price' button
+  // make sure that all input fields are filled in order to enable the 'calculate price' button
   const areAllInputsFilled = () => {
     return (
       state.cartValue > 0 &&
